@@ -9,7 +9,7 @@ def criar_categoria():
     dados = request.get_json()
 
     if not dados or 'nome' not in dados:
-        return jsonify({'mensagem': 'O campo nome é obrigatório.'})
+        return jsonify({'mensagem': 'O campo nome é obrigatório.'}), 400
     
     nova_categoria = Categoria(nome = dados['nome'])
 
@@ -20,11 +20,43 @@ def criar_categoria():
 
 @categorias_bp.route('/categorias', methods=['GET'])
 def listar_categorias():
+    categorias = Categoria.query.all()
+
+    resultado = []
+    for c in categorias:
+        resultado.append(c.to_dict())
+
+    return jsonify(resultado)
+    
+
+@categorias_bp.route('/categorias/<int:categoria_id>', methods=['GET'])
+def buscar_categoria_id(categoria_id):
+    categoria = Categoria.query.get_or_404(categoria_id)
+
+    return jsonify(categoria.to_dict())
+
+
+@categorias_bp.route('/categorias/<int:categoria_id>', methods = ['PUT'])
+def atualizar_categoria(categoria_id):
     dados = request.get_json()
 
-    if not dados or 'id' not in dados:
-        return jsonify({'mensagem': 'O campo id é obrigatório.'})
+    if not dados or 'nome' not in dados:
+        return jsonify({'mensagem': 'O campo nome é obrigatório.'})
     
-    # TO-DO: terminar função de listar categorias
+    nome = dados['nome']
+    categoria = Categoria.query.get_or_404(categoria_id)
 
-# TO-DO: terminar restante das rotas: GET, PUT, PATCH, DELETE
+    categoria.nome = nome
+    db.session.commit()
+
+    return categoria.to_dict()
+
+
+@categorias_bp.route('/categorias/<int:categoria_id>', methods = ['DELETE'])
+def deletar_categoria(categoria_id):
+    categoria = Categoria.query.get_or_404(categoria_id)
+
+    db.session.delete(categoria)
+    db.session.commit()
+
+    return jsonify({'mensagem': 'Categoria deletada com sucesso.'}), 200
