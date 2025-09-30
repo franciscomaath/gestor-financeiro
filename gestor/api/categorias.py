@@ -26,14 +26,14 @@ def listar_categorias():
     for c in categorias:
         resultado.append(c.to_dict())
 
-    return jsonify(resultado)
+    return jsonify(resultado), 200
     
 
 @categorias_bp.route('/categorias/<int:categoria_id>', methods=['GET'])
 def buscar_categoria_id(categoria_id):
     categoria = Categoria.query.get_or_404(categoria_id)
 
-    return jsonify(categoria.to_dict())
+    return jsonify(categoria.to_dict()), 200
 
 
 @categorias_bp.route('/categorias/<int:categoria_id>', methods = ['PUT'])
@@ -47,9 +47,9 @@ def atualizar_categoria(categoria_id):
     categoria = Categoria.query.get_or_404(categoria_id)
 
     categoria.nome = nome
-    db.session.commit()
+    db.session.commit() 
 
-    return categoria.to_dict()
+    return jsonify(categoria.to_dict()), 200
 
 
 @categorias_bp.route('/categorias/<int:categoria_id>', methods = ['DELETE'])
