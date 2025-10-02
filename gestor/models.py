@@ -25,3 +25,14 @@ class Transacao(db.Model):
     categoria_id = db.Column(db.Integer, db.ForeignKey('categoria.id'), nullable = False)
 
     categoria = db.relationship('Categoria', back_populates = 'transacoes')
+
+    def to_dict(self):
+        # categoria = Categoria.query.get(self.categoria_id)
+
+        return {
+            'id': self.id,
+            'descricao': self.descricao,
+            'valor': self.valor,
+            'tipo': self.tipo.value,
+            'categoria_id': self.categoria.nome
+        }
