@@ -60,3 +60,15 @@ def deletar_categoria(categoria_id):
     db.session.commit()
 
     return jsonify({'mensagem': 'Categoria deletada com sucesso.'}), 200
+
+@categorias_bp.route('/categorias/<int:categoria_id>/transacoes', methods = ['GET'])
+def filtrar_transacoes(categoria_id):
+    categoria = Categoria.query.get_or_404(categoria_id)
+
+    transacoes = categoria.transacoes
+
+    resultado = []
+    for t in transacoes:
+        resultado.append(t.to_dict())
+
+    return jsonify(resultado)
