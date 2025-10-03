@@ -1,0 +1,21 @@
+/* src/components/Header.css */
+
+.app-header {
+  background-color: #20232a; /* Um cinza escuro */
+  padding: 20px 40px;
+  color: #61dafb; /* Azul claro do React */
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-header p {
+  margin: 5px 0 0;
+  color: #ffffff;
+  font-size: 1rem;
+}
