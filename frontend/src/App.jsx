@@ -1,4 +1,5 @@
-import Header from './Header.jsx'
+import Header from './components/Header.jsx'
+import CategoryList from './components/CategoryList.jsx'
 import './App.css'
 
 function App() {
@@ -10,8 +11,12 @@ function App() {
       <main className='app-content'>
         <p>Conteudo principal aqui</p>
         <p>Lista de categorias e formulario vira aqui</p>
+
+        <CategoryList />  
+        
       </main>
     </>
+    
   )
 }
 

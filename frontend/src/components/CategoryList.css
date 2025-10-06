@@ -1,0 +1,40 @@
+/* src/components/CategoryList.css */
+
+/* Este é o container principal da sua lista */
+.category-list-container {
+  background-color: white; /* O fundo branco que você pediu */
+  color: #333; /* Muda a cor do texto para escuro, para ser legível no fundo branco */
+  
+  padding: 24px; /* Adiciona um bom espaçamento interno */
+  border-radius: 8px; /* Deixa as bordas levemente arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil para "elevar" o card */
+  
+  margin-top: 30px; /* Adiciona um espaço acima da lista */
+  max-width: 600px; /* Define uma largura máxima para não ficar muito largo em telas grandes */
+  
+  /* Estes dois centralizam o container na página */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-list-container h2 {
+  margin-top: 0; /* Remove a margem de cima do título */
+  color: #20232a; /* Deixa o título com um tom de cinza escuro */
+  border-bottom: 2px solid #f0f0f0; /* Adiciona uma linha sutil abaixo do título */
+  padding-bottom: 10px;
+}
+
+.category-list-container ul {
+  list-style: none; /* Remove os pontinhos da lista */
+  padding: 0;
+}
+
+.category-list-container li {
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee; /* Adiciona uma linha separadora entre os itens */
+}
+
+/* Estiliza o último item para não ter a linha embaixo */
+.category-list-container li:last-child {
+  border-bottom: none;
+}
